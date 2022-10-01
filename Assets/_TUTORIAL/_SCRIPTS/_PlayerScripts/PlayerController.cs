@@ -9,15 +9,36 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float speed = .125f, superSpeed = 50f;
 
-    [SerializeField]
     float horizontal, vertical;
     
     public Vector2 direction;
+
+    [Header("Salud, Oxígeno y Combustible")]
+    [SerializeField]
+    public float health;
+    public float oxygen;
+    public float fuel;
+    [SerializeField]
+    [Tooltip("Esta es la cantidad máx. de Salud")]
+    protected float maxHealth;
+    [SerializeField]
+    [Tooltip("Esta es la cantidad máx. de Salud")]
+    protected float maxOxygen;
+    [SerializeField]
+    [Tooltip("Esta es la cantidad máx. de Salud")]
+    protected float maxFuel;
+
+    [Header("Canvas")]
+    [SerializeField]
+    GameObject deadCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D >();
+        maxHealth = health;
+        maxOxygen = oxygen;
+        maxFuel = fuel;
         //body.AddForce(transform.right * superSpeed, ForceMode2D.Impulse);
     }
 
@@ -27,6 +48,11 @@ public class PlayerController : MonoBehaviour
         //body.AddForce(transform.right * speed);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        if(health <= 0f)
+        {
+            Dead();
+        }
     }
 
     void FixedUpdate()
@@ -35,5 +61,9 @@ public class PlayerController : MonoBehaviour
         direction.y = vertical * speed;
 
         body.AddForce(direction, ForceMode2D.Impulse);
+    }
+    private void Dead()
+    {
+        deadCanvas.SetActive(true);
     }
 }

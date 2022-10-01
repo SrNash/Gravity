@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,16 +22,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Tooltip("Esta es la cantidad máx. de Salud")]
     protected float maxHealth;
+    public float _maxHealth;
     [SerializeField]
     [Tooltip("Esta es la cantidad máx. de Salud")]
     protected float maxOxygen;
+    public float _maxOxygen;
     [SerializeField]
     [Tooltip("Esta es la cantidad máx. de Salud")]
     protected float maxFuel;
+    public float _maxFuel;
 
     [Header("Canvas")]
     [SerializeField]
     GameObject deadCanvas;
+    [SerializeField]
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()

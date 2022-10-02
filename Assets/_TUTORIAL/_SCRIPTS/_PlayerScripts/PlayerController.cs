@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         if(health <= 0f)
         {
             Dead();
+            health = 0;
         }
     }
 

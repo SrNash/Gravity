@@ -934,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8659515114397411058}
   - component: {fileID: 2388253276782111895}
+  - component: {fileID: 174932880}
   m_Layer: 5
   m_Name: FuelBar
   m_TagString: Untagged
@@ -1014,6 +1015,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &174932880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542106112671349788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a4d34d2690716478bbcdbb36f6f5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3606161753224983554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6895994609425884309}
   - component: {fileID: 1206258887501616527}
+  - component: {fileID: 883242725}
   m_Layer: 5
   m_Name: OxygenBar
   m_TagString: Untagged
@@ -2329,6 +2343,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &883242725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758577000541730140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f230242a287510e4a98e2d7781d618f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygenBar: {fileID: 1206258887501616527}
+  playerOxygen: {fileID: 0}
+  oxygen: 0
+  oxygenLess: 0.00125
 --- !u!1 &6601896436588852739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,6 +2828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4108261024300025701}
   - component: {fileID: 1966846784076135342}
+  - component: {fileID: 155389840}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2878,6 +2909,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &155389840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673158123494701695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53b1a147b6cd53468e46c0af044cfcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1966846784076135342}
+  playerHealth: {fileID: 0}
+  health: 0
 --- !u!1 &8372844889313817103
 GameObject:
   m_ObjectHideFlags: 0

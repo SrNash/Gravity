@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     float speed = .125f, superSpeed = 50f;
 
     float horizontal, vertical;
+    public float _horizontal, _vertical;
     
     public Vector2 direction;
 
@@ -35,8 +36,10 @@ public class PlayerController : MonoBehaviour
     [Header("Canvas")]
     [SerializeField]
     GameObject deadCanvas;
-    [SerializeField]
+    [Header("Otros Componentes")]
     public HealthBar healthBar;
+    public OxygenBar oxygenBar;
+    public FuelBar fuelBar;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +57,18 @@ public class PlayerController : MonoBehaviour
         //body.AddForce(transform.right * speed);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        
+        _horizontal = horizontal;
+        _vertical = vertical;
 
         if(health <= 0f)
         {
             Dead();
             health = 0;
+        }
+        if (horizontal != 0f)
+        {
+            //Descontaremos Oxígeno a la OxygenBar
         }
     }
 

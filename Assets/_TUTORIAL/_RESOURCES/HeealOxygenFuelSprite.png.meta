@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 3accc2ea217214d47a2c1f11847e4c11
+guid: 5974b735d6d93c14c84d3ed18e80690e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8779923055675772838
+    second: HeealOxygenFuelSprite_1
+  - first:
+      213: -5400472830798365395
+    second: HeealOxygenFuelSprite_2
+  - first:
+      213: 5959767006345725407
+    second: HeealOxygenFuelSprite_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -41,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -50,7 +59,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -90,11 +99,74 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HeealOxygenFuelSprite_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 377
+        width: 160
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af01d8408d88d970800000000000000
+      internalID: 8779923055675772838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeealOxygenFuelSprite_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 73
+        width: 161
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d7d15c29aad05b0800000000000000
+      internalID: -5400472830798365395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeealOxygenFuelSprite_4
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 64
+        width: 149
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5845d148855b250800000000000000
+      internalID: 5959767006345725407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 1d626487371483940af5c03e7915cd25
     internalID: 0
     vertices: []
     indices: 

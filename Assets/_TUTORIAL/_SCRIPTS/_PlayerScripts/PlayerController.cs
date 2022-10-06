@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("PlayerSprite")]
     [SerializeField]    // Variable para controlar la dirección a la que mira el SPRITE
     GameObject playerSprite;
-
+  
     [Header("Fuel")]
     public float fuel;  //Variable de combustible por defecto
     [SerializeField]
@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Otros Componentes")]
     public FuelBar fuelBar;
+    [SerializeField]
+    ParticleSystem psFuelPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -61,16 +63,27 @@ public class PlayerController : MonoBehaviour
         
         if (horizontal <= -.5f)
         {
-            playerSprite.transform.localScale = new Vector3(-.5f, .5f, 0);
-        }else if (horizontal >= .5f)
+            playerSprite.transform.localScale = new Vector3(1f, 1f, 0);
+        }
+        else if (horizontal >= .5f)
         {
-            playerSprite.transform.localScale = new Vector3(.5f, .5f, 0);
+            playerSprite.transform.localScale = new Vector3(-1f, 1f, 0);
         }
         _horizontal = horizontal;
         _vertical = vertical;
 
         
-        timerFuel += .125f;
+        timerFuel += .125f; //controlamos el tiempo de perdida de combustible
+
+        /// <summary>
+        ///Aqui comprobamos que el combustible/fuel es menos o igual a 0
+        /// llamamos a la función DEAD. 
+        /// </summary>
+        
+        if (currentFuel <= 0f)  
+        {
+            Dead();
+        }
     }
 
     void FixedUpdate()
@@ -80,6 +93,11 @@ public class PlayerController : MonoBehaviour
 
         body.AddForce(direction, ForceMode2D.Impulse);
     }
+
+    /// <summary>
+    /// En el LateUpdate (último frame) iremos descontando el combustible mediante un temporizador 
+    /// una vez llegue a 5 descontamos 1 al combustible.
+    /// </summary>
 
     void LateUpdate()
     {
@@ -91,8 +109,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void TakeFuel(Vector3 pos)
+    {
+        ParticleSystem goSmoke;
+        Debug.Log("Repostando");
+        goSmoke =  Instantiate(psFuelPrefab, pos, Quaternion.identity);
+        goSmoke.Play();
+        Destroy(goSmoke, 5f);
+    }
+
     private void Dead()
     {
         deadCanvas.SetActive(true);
+        this.enabled = true;
+        Debug.Log("Te moriste oiste?!");
     }
 }

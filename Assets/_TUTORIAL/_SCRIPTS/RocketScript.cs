@@ -4,32 +4,26 @@ using UnityEngine;
 
 public class RocketScript : MonoBehaviour
 {
-    [Header("Colliders")]
+    [Header("Colliders")]   //Variables del collider
     [SerializeField]
     Collider2D colRocket_1;
     [SerializeField]
-    Collider2D  colRocket_2;
+    float dmg = 5f;
     [Header("Hit Control")]
     [SerializeField]
-    float timer;
+    float timer;    //Variable de temporizador de impacto
     [SerializeField]
-    bool isHitting = false;
+    bool isHitting = false; //boolean de cuando el Player es golpeado
     [Header("Otros Como.")]
     [SerializeField]
     protected PlayerController player;
     void Start()
     {
         colRocket_1 = GetComponent<CapsuleCollider2D>();
-        colRocket_2 = GetComponent<BoxCollider2D>();
 
         if (colRocket_1 == null)
         {
             colRocket_1 = GetComponent<CapsuleCollider2D>();
-        }
-
-        if (colRocket_2 == null)
-        {
-            colRocket_2 = GetComponent<BoxCollider2D>();
         }
     }
 
@@ -44,14 +38,12 @@ public class RocketScript : MonoBehaviour
         {
             timer += Time.deltaTime;
             colRocket_1.isTrigger = true;
-            colRocket_2.isTrigger = true;
         }
 
         if (timer >= 15f)
         {
             isHitting = false;
             colRocket_1.isTrigger = false;
-            colRocket_2.isTrigger = false;
             timer = 0f;
         }
     }
@@ -61,8 +53,8 @@ public class RocketScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isHitting = true;
-           /*Debug.Log(player.health);
-            player.health -= 1f;*/
+           Debug.Log(player.currentFuel);
+            player.currentFuel -= dmg;
             
         }
     }

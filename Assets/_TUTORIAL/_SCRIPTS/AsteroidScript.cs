@@ -30,10 +30,7 @@ public class AsteroidScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*for (int i = 0; i < selfTrans.childCount; i++)
-        {
-            goChilds[i].transform.Rotate(90f,0f,0f);
-        }*/
+        //Queremos obtener el numero de hijos y hacerlos rotar sobre si mismos
     }
 
     void OnCollisionEnter2D(Collision2D other)

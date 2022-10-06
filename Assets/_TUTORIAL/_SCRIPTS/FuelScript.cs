@@ -5,16 +5,13 @@ using UnityEngine.UI;
 
 public class FuelScript : MonoBehaviour
 {
-    [HideInInspector]
+    [SerializeField]
     PlayerController player;
     [SerializeField]
     FuelBar fuelBar;
     [SerializeField]
-    float fuelAmount = 5f;
+    float fuelAmount = 10f;
 
-    [Header("PS Prefab")]
-    [SerializeField]
-    GameObject prefab;
 
     void Update()
     {
@@ -32,7 +29,8 @@ public class FuelScript : MonoBehaviour
             {
                 Debug.Log("SUMA COMBUSTIBLE");
                 player.currentFuel += fuelAmount;
-                Destroy(this);
+                player.TakeFuel(this.gameObject.transform.position);
+                Destroy(this.gameObject);
             }
         }
     }

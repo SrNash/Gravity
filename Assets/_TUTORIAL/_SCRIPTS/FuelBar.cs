@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class FuelBar : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class FuelBar : MonoBehaviour
     [SerializeField]
     float fuel;
     [SerializeField]
-    //public TMP_Text fuelPoints;
+    public TMP_Text fuelPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +22,14 @@ public class FuelBar : MonoBehaviour
         fuelBar = GetComponent<Slider>();
         fuelBar.maxValue = playerFuel._maxFuel;
         fuelBar.value = playerFuel.currentFuel;
-        fuel = playerFuel.fuel;
+        fuel = playerFuel.currentFuel;
     }
 
     // Update is called once per frame
     void Update()
     {
         fuelBar.value = playerFuel.currentFuel;
-        //fuelPoints.text = playerFuel.currentFuenl.ToString() + "  %";
+        fuel = playerFuel.currentFuel;
+        fuelPoints.text = playerFuel.currentFuel.ToString() + " %";
     }
 }

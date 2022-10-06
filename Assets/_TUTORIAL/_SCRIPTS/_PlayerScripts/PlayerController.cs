@@ -8,46 +8,47 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Rigidbody2D  body;
     [SerializeField]
-    float speed = .125f, superSpeed = 50f;
+    float speed = .125f, superSpeed = 50f;  //Variables de velocidad
 
     float horizontal, vertical;
-    public float _horizontal, _vertical;
+    public float _horizontal, _vertical;    //Variables de encapsulamiento de los ejes H y V
     
-    public Vector2 direction;
+    public Vector2 direction;   //Variable de control de dirección de movimiento
 
-    [Header("Salud, Oxígeno y Combustible")]
+    [Header("PlayerSprite")]
+    [SerializeField]    // Variable para controlar la dirección a la que mira el SPRITE
+    GameObject playerSprite;
+
+    [Header("Fuel")]
+    public float fuel;  //Variable de combustible por defecto
     [SerializeField]
-    public float health;
-    public float oxygen;
-    public float fuel;
-    [SerializeField]
-    [Tooltip("Esta es la cantidad máx. de Salud")]
-    protected float maxHealth;
-    public float _maxHealth;
-    [SerializeField]
-    [Tooltip("Esta es la cantidad máx. de Salud")]
-    protected float maxOxygen;
-    public float _maxOxygen;
-    [SerializeField]
-    [Tooltip("Esta es la cantidad máx. de Salud")]
-    protected float maxFuel;
-    public float _maxFuel;
+    protected float maxFuel;    
+    public float _maxFuel;  //Variable de encapsulamiento
+    public float currentFuel;   //Variable de cantidad actual de combustible
+    float  fuelLess = 1f;   //Variable de cantidad de perdida de combustible
+    float timerFuel;    //Variable de tiempo para controlar con mayor precisión la perdida de combustible
+
+    [Header("KeyCodes")]
+    public KeyCode jetPackKey;
+
+    [Header("Control")]
+    public bool isPlaying = false;  //Variable de control de partida
 
     [Header("Canvas")]
     [SerializeField]
     GameObject deadCanvas;
+
     [Header("Otros Componentes")]
-    public HealthBar healthBar;
-    public OxygenBar oxygenBar;
     public FuelBar fuelBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        isPlaying = true;
         body = GetComponent<Rigidbody2D >();
-        maxHealth = health;
-        maxOxygen = oxygen;
+        currentFuel = fuel;
         maxFuel = fuel;
+        _maxFuel = maxFuel;
         //body.AddForce(transform.right * superSpeed, ForceMode2D.Impulse);
     }
 
@@ -58,18 +59,18 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         
+        if (horizontal <= -.5f)
+        {
+            playerSprite.transform.localScale = new Vector3(-.5f, .5f, 0);
+        }else if (horizontal >= .5f)
+        {
+            playerSprite.transform.localScale = new Vector3(.5f, .5f, 0);
+        }
         _horizontal = horizontal;
         _vertical = vertical;
 
-        if(health <= 0f)
-        {
-            Dead();
-            health = 0;
-        }
-        if (horizontal != 0f)
-        {
-            //Descontaremos Oxígeno a la OxygenBar
-        }
+        
+        timerFuel += .125f;
     }
 
     void FixedUpdate()
@@ -79,6 +80,17 @@ public class PlayerController : MonoBehaviour
 
         body.AddForce(direction, ForceMode2D.Impulse);
     }
+
+    void LateUpdate()
+    {
+        if (timerFuel >= 5f)
+        {
+            currentFuel -= 1f;
+            timerFuel = 0f;
+        }
+        
+    }
+
     private void Dead()
     {
         deadCanvas.SetActive(true);

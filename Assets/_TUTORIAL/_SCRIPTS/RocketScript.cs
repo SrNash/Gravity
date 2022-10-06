@@ -61,8 +61,8 @@ public class RocketScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isHitting = true;
-            Debug.Log(player.health);
-            player.health -= 1f;
+           /*Debug.Log(player.health);
+            player.health -= 1f;*/
             
         }
     }

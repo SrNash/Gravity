@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,8 +30,9 @@ public class PlayerController : MonoBehaviour
     float  fuelLess = 1f;   //Variable de cantidad de perdida de combustible
     float timerFuel;    //Variable de tiempo para controlar con mayor precisión la perdida de combustible
 
-    [Header("KeyCodes")]
-    public KeyCode jetPackKey;
+    [Header("Audios")]
+    [SerializeField]
+    AudioSource as_DeadSound;
 
     [Header("Control")]
     public bool isPlaying = false;  //Variable de control de partida
@@ -109,6 +112,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
+    /// <summary>
+    /// Función para recolectar el combustible del nivel
+    /// </summary>
+
     public void TakeFuel(Vector3 pos)
     {
         ParticleSystem goSmoke;
@@ -118,10 +126,25 @@ public class PlayerController : MonoBehaviour
         Destroy(goSmoke, 5f);
     }
 
+    /// <summary>
+    /// Función de Muerte del Player
+    /// </summary>
+
     private void Dead()
     {
-        deadCanvas.SetActive(true);
-        this.enabled = true;
+        deadCanvas.SetActive(true); //Activamos el canvas de la Pantalla de Muerte
+        this.enabled = false;   //Desactivamos este Script
+        as_DeadSound.Play();    //Activamos el sonido de la Pantalla de Muerte
         Debug.Log("Te moriste oiste?!");
+    }
+
+    /// <summary>
+    /// Función para el Reset del Nivel
+    /// </summary>
+
+    public void ClickReset()
+    {
+        SceneManager.LoadScene(0);
+        Debug.Log("Reseteando el Nivel");
     }
 }

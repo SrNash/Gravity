@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class FuelScript : MonoBehaviour
 {
+    [Header("Player")]
     [SerializeField]
     PlayerController player;
+    
+    [Header("FuelBar")]
     [SerializeField]
     FuelBar fuelBar;
     [SerializeField]
     float fuelAmount = 10f;
+
+    [Header("AudioSource")]
+    [SerializeField]
+    AudioSource asFuel;
 
 
     void Update()
@@ -30,7 +37,8 @@ public class FuelScript : MonoBehaviour
                 Debug.Log("SUMA COMBUSTIBLE");
                 player.currentFuel += fuelAmount;
                 player.TakeFuel(this.gameObject.transform.position);
-                Destroy(this.gameObject);
+                asFuel.Play();
+                Destroy(this.gameObject, .2f);
             }
         }
     }

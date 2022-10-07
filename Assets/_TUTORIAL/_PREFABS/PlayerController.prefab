@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 8409567093258975833}
   - component: {fileID: 5310729654256141024}
   m_Layer: 0
-  m_Name: w
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,8 +407,8 @@ MonoBehaviour:
   maxFuel: 100
   _maxFuel: 0
   currentFuel: 0
-  jetPackKey: 32
+  as_DeadSound: {fileID: 0}
   isPlaying: 0
   deadCanvas: {fileID: 0}
   fuelBar: {fileID: 0}
-  psFuelPrefab: {fileID: 0}
+  psFuelPrefab: {fileID: 1956946666965478358, guid: 4b9dfb44e64654440b0583f527582e50, type: 3}
